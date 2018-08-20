@@ -1,25 +1,12 @@
 {
     "root": "",
-    "title": "wiki exp",
+    "title": "monotome",
     "subjects": {
-        "math": [
-            "readme.md"
-        ],
-        "memory": [
-            "field notes.md"
-        ],
-        "quotes": [
-            "readme.md"
-        ],
-        "thoughts": [
+        "example": [
             "first.md",
-            "nice.md",
-            "second.md"
+            "readme.md"
         ]
     },
-    "redirects": {
-        "what/redirect.md": "thoughts/first.md",
-        "test/wow.md": "thoughts/nice.md"
-    },
+    "redirects": {},
     "missing": []
 }
