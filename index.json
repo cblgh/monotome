@@ -1,0 +1,25 @@
+{
+    "root": "",
+    "title": "wiki exp",
+    "subjects": {
+        "math": [
+            "readme.md"
+        ],
+        "memory": [
+            "field notes.md"
+        ],
+        "quotes": [
+            "readme.md"
+        ],
+        "thoughts": [
+            "first.md",
+            "nice.md",
+            "second.md"
+        ]
+    },
+    "redirects": {
+        "what/redirect.md": "thoughts/first.md",
+        "test/wow.md": "thoughts/nice.md"
+    },
+    "missing": []
+}
