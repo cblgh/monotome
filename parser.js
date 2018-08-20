@@ -5,13 +5,16 @@ window.onload = function() {
         return res.json()
     }).then(initiate)
 
-    function open(f) {
+    function open(f, changeHistory=true) {
         var redirect = index.redirects[f]
         if (redirect) f = redirect
         fetch(f).then(function(res) {
             return res.text()
         })
         .then(function(body) {
+            if (changeHistory) {
+                window.location = `#${f}`
+            }
             document.querySelector(".breadcrumb").innerHTML = decodeURI(f)
             document.querySelector(".content").innerHTML = marked(body)
             document.body.querySelectorAll("a").forEach(function(a) {
@@ -54,11 +57,19 @@ window.onload = function() {
         document.querySelector(".index").appendChild(subjectNode)
     }
 
+
     function initiate(data) {
         index = data
+        // make browser history work as expected
+        window.onhashchange = function(info) {
+            open(window.location.hash.substring(1), false)
+        }
+        // set page title
         document.title = index.title
-        open("./readme.md") // open start page
-        indexInject(".", "start") // add start to index
+        // add start to index
+        indexInject(".", "start") 
+        // open the linked location, else start page
+        open(window.location.hash ? window.location.hash.substring(1) : "./readme.md")
         Object.keys(index.subjects).forEach(function(subject) {
             indexInject(subject, subject)
             var ul = el("ul")

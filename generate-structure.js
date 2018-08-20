@@ -33,6 +33,7 @@ walk("./").then((data) => {
     var pattern = /(.*\/)+(.*\.md)/
     json("index.json").then((index) => {
         index.subjects = {}
+        console.log(`indexing ${data.length} articles`)
         data.forEach((p) => {
             var match = p.match(pattern) 
             if (!match || match.length < 1) return
@@ -40,7 +41,7 @@ walk("./").then((data) => {
             index.subjects[subject] = index.subjects[subject] || [] 
             index.subjects[subject].push(match[2]) // article.md
         })
-        fs.writeFile("index.json", JSON.stringify(index, null, 4))
+        fs.writeFile("index.json", JSON.stringify(index, null, 4), (err) => {if (err) throw err}, console.log(`index: updated`))
     })
 })
 
