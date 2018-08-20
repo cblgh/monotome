@@ -1,15 +1,15 @@
 # wikisoft
-### a project by cblgh
 
-i wanted to start a wiki
+i wanted to start a wiki so i made this
 
-### [Reasons behind this urge](#Reasons)
+### Structure
+subjects are ordered into a simple directory structure which is mirrored by `index.json`
 
-* i want to document what i learn so that i don't have to relearn it later
-* i want to have a sort-of a spellbook i can use to lookup old incantations and procedures instead of having to rediscover them. an
-[exocortex](https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/Exocortex.html)
-* a (personal) wiki feels like the kind of [mind-augmenting tool](memory/field%20notes.md) that timers or calendars or trello boards are;
-they free up your mental resources for use elsewhere
+you can fill index.json's `subjects` key by hand if you want to avoid even running a script to use your wiki
 
-so i created this  
-### welcome
+or you can run `node generate-structure.js` to do that for you
+
+this `readme.md` is the start page of your wiki, and each `readme.md` within a subject folder is the overview page for
+that subject
+
+clone this project and open `index.html` to give it a try
