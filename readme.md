@@ -2,6 +2,8 @@
 
 i wanted to start a wiki so i made this
 
+![screenshot](screen.png)
+
 ### Structure
 subjects are ordered into a simple directory structure which is mirrored by `index.json`
 
