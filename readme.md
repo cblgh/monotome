@@ -1,4 +1,4 @@
-# wikisoft
+# monotome
 
 i wanted to start a wiki so i made this
 
