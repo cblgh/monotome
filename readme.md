@@ -2,7 +2,7 @@
 
 i wanted to start a wiki so i made this
 
-![screenshot](screen.png)
+![screenshot](media/screen.png)
 
 ### Structure
 subjects are ordered into a simple directory structure which is mirrored by `index.json`. you can fill `index.json`'s `subjects` by hand if you want to avoid even running a script to use your wiki
