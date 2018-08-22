@@ -2,7 +2,6 @@
 ## Pirate ignore
 #################
 node_modules/
-*.css
 *.vim
 *bundle*.js
 /html/*.html
