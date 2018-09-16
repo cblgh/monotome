@@ -9,7 +9,7 @@ rename(src, dst, index)
     .then(() => {console.log(`redirected: ${src}->${dst}`)})
     .catch((e) => {console.error(e)})
 
-// TODO: support moving entire folders
+// TODO: support moving entire folders++
 function rename(src, dst, f) {
     return new Promise((resolve, reject) => {
         fs.rename(src, dst, function(err) {

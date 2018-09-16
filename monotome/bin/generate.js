@@ -38,7 +38,7 @@ walk(process.cwd()).then((data) => {
         console.log(`indexing ${data.length} articles`)
         data.forEach((p) => {
             var match = p.substring(process.cwd().length).match(pattern) 
-            if (!match || match.length < 1) return
+            if (!match || match.length < 1 || match[1] === "/") return
             var subject = match[1].replace(/\//g, "")
             index.subjects[subject] = index.subjects[subject] || [] 
             index.subjects[subject].push(match[2]) // article.md

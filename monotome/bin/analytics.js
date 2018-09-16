@@ -6,6 +6,7 @@ fs.readFile(index, function(err, data) {
     var index = JSON.parse(data)
     var promises = []
     var subjects = Object.keys(index.subjects)
+    console.log(subjects)
     var filecount = subjects.map((s) => index.subjects[s].length).reduce((a, c) => a+c)
     subjects.forEach((subject) => {
         promises = index.subjects[subject].map((file) => {
