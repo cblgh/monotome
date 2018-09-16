@@ -24,4 +24,6 @@ This `readme.md` is the start page of your wiki and each **`readme.md`** within 
 ### License
 monotome's code and resources are licensed under AGPL. 
 
-`marked.js` is MIT, and Inter UI is available under `SIL OPEN FONT LICENSE Version 1.1`. Read the respctive license files for more information
+`marked.js` is MIT-licensed and Inter UI is available under `SIL OPEN FONT LICENSE Version 1.1`.
+
+Read the respctive license files for more information
