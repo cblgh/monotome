@@ -12,4 +12,13 @@ you can also run `node monotome/bin/generate.js` and it will fill `index.json` f
 this `readme.md` is the start page of your wiki, and each `readme.md` within a subject folder is the overview page for
 that subject
 
-#### clone this project and open `index.html` to give it a try
+---
+
+### Get Started
+**clone this project** and open `index.html` to give it a try
+
+if you're using chrome as your browser:
+* **open** a terminal
+* **navigate** to the cloned directory
+* **run** `python -m SimpleHTTPServer`
+* **browse** to **`localhost:8000`** to use the wiki
