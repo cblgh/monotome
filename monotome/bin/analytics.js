@@ -1,6 +1,8 @@
+var util = require("util")
 var fs = require("fs")
-fs.readFile(`${process.cwd()}/index.json`, function(err, data) {
-    if (err) throw err
+var readFile = util.promisify(fs.readFile)
+readFile(`${process.cwd()}/index.json`).then((data) => {
+    var missing = []
     var index = JSON.parse(data)
     var promises = []
     // count subjects
@@ -10,25 +12,22 @@ fs.readFile(`${process.cwd()}/index.json`, function(err, data) {
     // count words
     subjects.forEach((subject) => {
         subjectPromises = index.subjects[subject].map((file) => {
-            return new Promise((resolve, reject) => {
-                fs.readFile(`${process.cwd()}/${subject}/${file}`, (err, data) => {
-                    if (err) reject(err)
-                    resolve({ 
-                        words: data.toString().split(/ /g).length, 
-                        chars: data.toString().split(/./g).length 
-                    })
-                })
-            })
+            return readFile(`${process.cwd()}/${subject}/${file}`).then((data) => {
+                return { words: data.toString().split(/ /g).length,  chars: data.toString().split(/./g).length }
+            }).catch((e) => missing.push(`${subject}/${file}`)) // log missing file
         })
         promises = promises.concat(subjectPromises)
     })
     Promise.all(promises).then((results) => {
-        var count = results.reduce((acc, cur) => {
+        var count = results.filter((i) => typeof i === "object").reduce((acc, cur) => {
             return { words: acc.words + cur.words, chars: acc.chars + cur.chars }
         }, {words: 0, chars: 0})
         console.log("subjects:", subjects.length)
         console.log("files:   ", filecount)
         console.log("words:   ", count.words) 
         console.log("chars:   ", count.chars) 
+        console.log(new Array(20).fill(".").join(""))
+        console.log(`${missing.length} file${missing.length === 1 ? '' : 's'} missing`)
+        missing.map((f) => console.log(f))
     })
-})
+}).catch((e) => console.error("index.json can't be found", e))
