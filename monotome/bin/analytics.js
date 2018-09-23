@@ -1,7 +1,7 @@
 var util = require("util")
 var fs = require("fs")
 var readFile = util.promisify(fs.readFile)
-readFile(`${process.cwd()}/index.json`).then((data) => {
+readFile(`index.json`).then((data) => {
     var missing = []
     var index = JSON.parse(data)
     var promises = []
@@ -12,7 +12,7 @@ readFile(`${process.cwd()}/index.json`).then((data) => {
     // count words
     subjects.forEach((subject) => {
         subjectPromises = index.subjects[subject].map((file) => {
-            return readFile(`${process.cwd()}/${subject}/${file}`).then((data) => {
+            return readFile(`${subject}/${file}`).then((data) => {
                 return { words: data.toString().split(/ /g).length,  chars: data.toString().split(/./g).length }
             }).catch((e) => missing.push(`${subject}/${file}`)) // log missing file
         })
