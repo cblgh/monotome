@@ -26,7 +26,7 @@ readFile(`${process.cwd()}/index.json`).then((data) => {
         console.log("files:   ", filecount)
         console.log("words:   ", count.words) 
         console.log("chars:   ", count.chars) 
-        console.log(new Array(20).fill(".").join(""))
+        console.log((".").repeat(20))
         console.log(`${missing.length} file${missing.length === 1 ? '' : 's'} missing`)
         missing.map((f) => console.log(f))
     })
