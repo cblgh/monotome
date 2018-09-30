@@ -43,6 +43,13 @@ blockquote {
 code {
     background: var(--code-bg);
 }
+img {
+    padding: 15px;
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 .content {
     margin: 20px auto 70px auto;
     width: 800px;
