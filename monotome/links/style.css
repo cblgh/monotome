@@ -57,8 +57,6 @@ img {
 
 .index {
     position: fixed;
-    display: grid;
-    padding-top: 40px;
     margin: 10px 0 0 5px;
     width: 200px;
     /* https://stackoverflow.com/a/13337664 */
@@ -75,10 +73,8 @@ img {
     border-bottom: none !important;
 }
 .breadcrumb {
-    position: fixed;
     height: 40px;
     background: var(--dark);
-    margin-bottom: 15px;
 }
 h1 {
     padding-top: 35px;
