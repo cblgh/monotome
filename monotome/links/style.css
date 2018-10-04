@@ -1,5 +1,4 @@
 @import url('inter-ui-web/inter-ui.css');
-
 :root {
     --dark: #000;
     --light: #fefefe;
@@ -14,13 +13,16 @@ html {
     background-color: var(--dark);
     color: var(--light);
 }
+
 body {
     display: grid;
     line-height: 25px;
 }
-a:visited {
-    color: var(--white);
+
+h1 {
+    padding-top: 35px;
 }
+
 a {
     color: var(--white);
     text-decoration: none;
@@ -34,15 +36,21 @@ a {
 a:hover {
     opacity: 0.7;
 }
-blockquote {
+a:visited {
+    color: var(--white);
+}
+
+blockquote, pre {
     background: var(--code-bg);
-    padding: 10px 35px 10px 45px;
-    margin: 16px 0 16px 0;
+    padding: 24pt 32pt;
+    margin: 16pt 0 32pt 0;
     width: 80%;
 }
+
 code {
     background: var(--code-bg);
 }
+
 img {
     padding: 15px;
     display: block;
@@ -50,6 +58,7 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+
 .content {
     margin: 20px auto 70px auto;
     width: 800px;
@@ -65,6 +74,7 @@ img {
     overflow-y: scroll;
     top: 0;
     bottom: 0;
+
 }
 .index ul {
     margin: 0;
@@ -74,12 +84,10 @@ img {
 .index a {
     border-bottom: none !important;
 }
+
 .breadcrumb {
     position: fixed;
     height: 40px;
     background: var(--dark);
     margin-bottom: 15px;
-}
-h1 {
-    padding-top: 35px;
 }
