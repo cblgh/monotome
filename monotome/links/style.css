@@ -66,6 +66,7 @@ img {
 
 .index {
     position: fixed;
+    padding-top: 35px; /* padding for breadcrumb */
     margin: 10px 0 0 5px;
     width: 200px;
     /* https://stackoverflow.com/a/13337664 */
@@ -84,6 +85,9 @@ img {
 }
 
 .breadcrumb {
+    position: fixed; /* let breadcrumb be at the top while we scroll through the index */
+    margin-bottom: 15px;
     height: 40px;
+    z-index: 10;
     background: var(--dark);
 }
