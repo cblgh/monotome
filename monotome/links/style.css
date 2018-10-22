@@ -8,19 +8,54 @@
     --time: 100ms;
 }
 
+/* Reset.css Courtesy of XXIIVV */
+*           { margin:0;padding:0;border:0;outline:0;text-decoration:none;font-weight:inherit;font-style:inherit;color:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;border-collapse:collapse;border-spacing:0; -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+*:focus     { outline: none}
+::selection { background: #72dec2; opacity:1.0; color:#000; padding:10px; /* Safari */ }
+
+body { background:#000; overflow-x: hidden; transition: opacity 150ms; opacity: 1 !important}
+b { font-weight:bold; }
+i { font-style:italic; }
+a { cursor: pointer; }
+ul { list-style-position: outside; }
+hr { clear:both; }
+code { white-space: pre; color: black; background: white; font-family: monospace; }
+svg { stroke-width: 10;stroke: white;stroke-linecap: round; }
+strong { font-weight: bold; }
+
+
+/* main */
 html {
     font-family: "Inter UI", sans-serif;
     background-color: var(--dark);
     color: var(--light);
+    line-height: 1.5rem;
 }
 
 body {
     display: grid;
-    line-height: 25px;
+    /* line-height: 25px; */
 }
 
 h1 {
-    padding-top: 35px;
+    padding: 1rem 0;
+    font-size: 2rem;
+}
+
+h2, h3, h4, h5, h6 {
+    padding: 1rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.15rem;
 }
 
 a {
@@ -42,33 +77,57 @@ a:visited {
 
 blockquote, pre {
     background: var(--code-bg);
-    padding: 24pt 32pt;
-    margin: 16pt 0 32pt 0;
+    padding: 1.5rem 2rem;
+    margin: 1rem 0 1rem 0;
+    width: 80%;
+}
+
+pre {
+    color: var(--code-bg);
+    background: white;
+    padding: 1.5rem 2rem;
+    margin: 1rem 0 1rem 0;
     width: 80%;
 }
 
 code {
-    background: var(--code-bg);
+    color: var(--code-bg);
+    background: white;
+    padding: .2rem;
+    border-radius: 1rem;
+}
+pre code {
+    padding: unset;
+    border-radius: unset;
 }
 
 img {
-    padding: 15px;
+    padding: 1rem;
     display: block;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 
+ul {
+    list-style-image: url("../media/dot.svg");
+    margin-left: 1rem;
+}
+
+p {
+    padding: .5rem 0;
+}
+
 .content {
-    margin: 20px auto 70px auto;
+    margin: 2rem auto 3rem auto;
     width: 800px;
 }
 
 .index {
     position: fixed;
-    padding-top: 35px; /* padding for breadcrumb */
-    margin: 10px 0 0 5px;
-    width: 200px;
+    padding-top: 3rem; /* padding for breadcrumb */
+    margin: 0.5rem 0 0 0.5rem;
+    width: 13rem;
     /* https://stackoverflow.com/a/13337664 */
     overflow-y: scroll;
     top: 0;
@@ -78,16 +137,21 @@ img {
 .index ul {
     margin: 0;
     list-style-type: none;
-    padding-left: 20px;
+    padding-left: 1rem;
+}
+.index li:before {
+    content: "";
+    margin-right: 0;
 }
 .index a {
     border-bottom: none !important;
 }
 
 .breadcrumb {
-    position: fixed; /* let breadcrumb be at the top while we scroll through the index */
-    margin-bottom: 15px;
-    height: 40px;
+    position: fixed; /* show the breadcrumb while we scroll through the index */
+    border-bottom: 1px white solid;
+    padding: 1rem 1rem .5rem 0.5rem;
+    width: 11rem;
     z-index: 10;
     background: var(--dark);
 }
