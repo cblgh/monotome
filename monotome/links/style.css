@@ -93,7 +93,7 @@ pre {
 code {
     color: var(--code-bg);
     background: white;
-    padding: .2rem;
+    padding: .5rem;
     border-radius: 1rem;
 }
 pre code {
