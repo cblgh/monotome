@@ -101,6 +101,8 @@ code {
 pre code {
     padding: unset;
     border-radius: unset;
+    color: var(--code-bg);
+    background: unset;
 }
 
 img {
