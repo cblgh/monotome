@@ -129,7 +129,7 @@ p {
 
 .content {
     margin: 3rem auto 6rem auto;
-    max-width: 800px;
+    width: 800px;
 }
 
 .index {
