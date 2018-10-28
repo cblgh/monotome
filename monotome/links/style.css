@@ -34,7 +34,9 @@ html {
 
 body {
     display: grid;
-    /* line-height: 25px; */
+    grid-template-columns: 13rem 1fr;
+    height: 100%;
+    grid-column-gap: 20px;
 }
 
 h1 {
@@ -93,7 +95,7 @@ pre {
 code {
     color: var(--code-bg);
     background: white;
-    padding: .5rem;
+    padding: 0.1rem .5rem;
     border-radius: 1rem;
 }
 pre code {
@@ -124,7 +126,6 @@ p {
 }
 
 .index {
-    position: fixed;
     padding-top: 3rem; /* padding for breadcrumb */
     margin: 0.5rem 0 0 0.5rem;
     width: 13rem;
@@ -150,8 +151,12 @@ p {
 .breadcrumb {
     position: fixed; /* show the breadcrumb while we scroll through the index */
     border-bottom: 1px white solid;
-    padding: 1rem 1rem .5rem 0.5rem;
+    padding: 1rem 0.1rem 0.5rem 0.5rem;
     width: 11rem;
     z-index: 10;
     background: var(--dark);
+}
+.sidebar {
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
