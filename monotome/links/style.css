@@ -30,6 +30,14 @@ a code {
 
 
 /* main */
+em {
+    font-style: italic;
+}
+
+del {
+    text-decoration: line-through;
+}
+
 html {
     font-family: "Inter UI", sans-serif;
     background-color: var(--dark);
@@ -129,7 +137,7 @@ p {
 
 .content {
     margin: 3rem auto 6rem auto;
-    width: 800px;
+    width: 50rem;
 }
 
 .index {
@@ -167,4 +175,12 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+/* ipad max-width */
+@media screen and (max-width: 768px) {
+    .content {
+        margin: 3rem auto 6rem auto;
+        width: 30rem;
+    }
 }
