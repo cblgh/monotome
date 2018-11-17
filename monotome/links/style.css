@@ -6,6 +6,7 @@
     --white: #f2f2f2;
     --code-bg: #111;
     --time: 100ms;
+    --external: #ffff99;
 }
 
 /* Reset.css Courtesy of XXIIVV */
@@ -88,6 +89,9 @@ a:hover {
 }
 a:visited {
     color: var(--white);
+}
+a[href^="http://"], a[href^="https://"] {
+    color: var(--external);
 }
 
 blockquote, pre {
