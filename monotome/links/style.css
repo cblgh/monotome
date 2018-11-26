@@ -115,12 +115,27 @@ code {
     background: white;
     padding: 0.1rem .5rem;
     border-radius: 1rem;
+    /* make entire contents selectable by one click */
+    -webkit-touch-callout: all;
+    -webkit-user-select: all;
+    -khtml-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+
 }
+
 pre code {
     padding: unset;
     border-radius: unset;
     color: var(--code-bg);
     background: unset;
+    -webkit-touch-callout: unset;
+    -webkit-user-select: unset;
+    -khtml-user-select: unset;
+    -moz-user-select: unset;
+    -ms-user-select: unset;
+    user-select: unset;
 }
 
 img {
