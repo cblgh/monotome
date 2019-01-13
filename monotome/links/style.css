@@ -29,7 +29,6 @@ a code {
     padding: 0;
 }
 
-
 /* main */
 em {
     font-style: italic;
@@ -195,6 +194,10 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.index-active {
+    font-weight: bold;
 }
 
 /* ipad max-width */
