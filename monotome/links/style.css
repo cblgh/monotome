@@ -200,6 +200,24 @@ p {
     font-weight: bold;
 }
 
+.navigation {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 8rem;
+    height: 1rem;
+    background: var(--white);
+    color: var(--dark);
+    padding: .5rem;
+    margin: .5rem;
+}
+
+.visible {
+    display: block
+}
+
+
 /* ipad max-width */
 @media screen and (max-width: 768px) {
     .content {

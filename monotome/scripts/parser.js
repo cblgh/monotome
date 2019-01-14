@@ -9,7 +9,7 @@ window.onload = function() {
     })
 
     // listen indexer requests to open files
-    document.body.addEventListener("open-file", function (e) { open(e.detail.file, { scrollTo: true }) })
+    document.body.addEventListener("open-file", function (e) { open(e.detail.file, { scrollTo: true, changeHistory: true }) })
 
     function open(f, opts) {
         if (typeof opts === "undefined") {
@@ -34,11 +34,11 @@ window.onload = function() {
             })
         })
         // highlight opened entry
+        var previouslyActive = document.querySelector(".index-active")
+        if (previouslyActive) previouslyActive.classList.remove("index-active")
         var entry = document.getElementById(f.replace(/\/|(.md)|\s/g, ""))
         if (entry) {
             if (opts.scrollTo) entry.scrollIntoView({ behaviour: "smooth", block: "center" })
-            var previouslyActive = document.querySelector(".index-active")
-            if (previouslyActive) previouslyActive.classList.remove("index-active")
             entry.classList.add("index-active")
         }
     }
@@ -71,10 +71,9 @@ window.onload = function() {
         var l = link(path, "readme.md", title)
         var subjectNode = el("div", {classList: "subject"})
         subjectNode.appendChild(l)
-        subjectNode.id = title+"readme"
+        subjectNode.id = path+"readme"
         document.querySelector(".index").appendChild(subjectNode)
     }
-
 
     function initiate(data) {
         index = data

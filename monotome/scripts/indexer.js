@@ -11,12 +11,25 @@ window.addEventListener("DOMContentLoaded", function () {
 
     function handleKeypress (e) {
         keypressed = true
-        if (e.key === "Enter") { processBuffer(buffer) }
+        if (isModifier(e)) { return }
+        else if (e.key === "Enter") { processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
+        else if (e.key === "Backspace") { e.preventDefault(); eraseFromBuffer() }
         else { addToBuffer(e.key) }
     }
 
-    function addToBuffer(ch) {
+    function isModifier (e) {
+        return e.altKey || e.ctrlKey || e.metaKey || e.key === "Shift" || (buffer.length === 0 && e.key === "Backspace")
+    }
+
+    function eraseFromBuffer () {
+        if (buffer.length === 1) { clearBuffer() } 
+        else { buffer = buffer.slice(0, -1); emit("type-backspace") }
+    }
+
+    function addToBuffer (ch) {
+        // don't add empty spaces to the buffer, user is probably scrolling down
+        if (buffer === "" && ch === " ") return
         buffer += ch
         emit("type", { ch: ch })
     }
@@ -33,12 +46,16 @@ window.addEventListener("DOMContentLoaded", function () {
 
     function processBuffer () {
         searchIndex(buffer)
-        buffer = ""
+        clearBuffer()
     }
 
     function searchIndex (term) {
         // some browsers have / as a search hotkey: use -- to type /
         term = term.replace("--", "/")
+        if (term[0] === ".") {
+            emit("open-file", { file: "./readme.md" })
+            return
+        }
         // process all categories first
         for (var subject of Object.keys(index.subjects)) {
             if (subject.indexOf(term) >= 0) {
