@@ -140,7 +140,7 @@ pre code {
 img {
     padding: 1rem;
     display: block;
-    width: 100%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
