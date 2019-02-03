@@ -8,8 +8,10 @@ window.onload = function() {
         initiate(index)
     })
 
-    // listen indexer requests to open files
-    document.body.addEventListener("open-file", function (e) { open(e.detail.file, { scrollTo: true, changeHistory: true }) })
+    // listen after indexer requests to open files
+    document.body.addEventListener("open-file", function (e) { 
+        open(e.detail.file, { scrollTo: true, changeHistory: true }) 
+    })
 
     function open(f, opts) {
         if (typeof opts === "undefined") {
@@ -17,15 +19,12 @@ window.onload = function() {
         }
         var redirect = index.redirects[f]
         if (redirect) f = redirect
-        fetch(f).then(function(res) {
-            return res.text()
-        })
-        .then(function(body) {
+        read(f, function(body) {
             if (opts.changeHistory) {
                 window.location = `#${f}`
             }
             document.querySelector(".breadcrumb").innerHTML = decodeURI(f)
-            document.querySelector(".content").innerHTML = marked(body)
+            document.querySelector(".content").innerHTML = body
             document.body.querySelectorAll("a").forEach(function(a) {
                 // if relative markdown link
                 if (/^[^\/].*\.md$/.test(a.href)) {

@@ -1,0 +1,4 @@
+body {
+    grid-template-columns: 1fr !important;
+    height: unset;
+}
