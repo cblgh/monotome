@@ -152,11 +152,12 @@ ul {
 
 p {
     padding: .5rem 0;
+    text-align: justify;
 }
 
 .content {
     margin: 3rem auto 6rem auto;
-    width: 50rem;
+    width: 40rem;
 }
 
 .index {
