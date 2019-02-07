@@ -13,7 +13,7 @@ var titlePattern = /\w*\/(.+).md/
 var source = args[0]
 var match = source.match(titlePattern)
 if (!match) { console.error("publish: invalid file path"); return }
-var title = match[1].replace(/\\\s/g, "-")
+var title = match[1].replace(/(\\\s)|\s+/g, "-")
 // the title was provided as an argument
 if (typeof args[1] !== "undefined")  { title = args[1] }
 

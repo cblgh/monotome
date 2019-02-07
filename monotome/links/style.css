@@ -20,7 +20,7 @@ i { font-style:italic; }
 a { cursor: pointer; }
 ul { list-style-position: outside; }
 hr { clear:both; }
-code { white-space: pre; color: black; background: white; font-family: monospace; }
+code { white-space: pre; color: var(--light); background: var(--dark); font-family: monospace; }
 svg { stroke-width: 10;stroke: white;stroke-linecap: round; }
 strong { font-weight: bold; }
 a code {
@@ -102,16 +102,14 @@ blockquote, pre {
 }
 
 pre {
-    color: var(--code-bg);
-    background: white;
     padding: 1.5rem 2rem;
     margin: 1rem 0 1rem 0;
-    width: 80%;
+    width: 100%;
 }
 
 code {
     color: var(--code-bg);
-    background: white;
+    background: var(--light);
     padding: 0.1rem .5rem;
     border-radius: 1rem;
     /* make entire contents selectable by one click */
@@ -125,9 +123,10 @@ code {
 }
 
 pre code {
+    border-style: dotted;
+    color: var(--light);
     padding: unset;
     border-radius: unset;
-    color: var(--code-bg);
     background: unset;
     -webkit-touch-callout: unset;
     -webkit-user-select: unset;
