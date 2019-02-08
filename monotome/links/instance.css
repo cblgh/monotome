@@ -2,3 +2,7 @@ body {
     grid-template-columns: 1fr !important;
     height: unset;
 }
+
+.content {
+    margin-top: 6rem !important;
+}
