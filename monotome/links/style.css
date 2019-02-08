@@ -95,16 +95,9 @@ a[href^="http://"], a[href^="https://"] {
 }
 
 blockquote, pre {
-    padding: 1rem 2rem;
-    margin: 1rem 0;
-    width: 80%;
-    border-left: var(--white) .1rem solid;
-}
-
-pre {
     padding: 1.5rem 2rem;
-    margin: 1rem 0 1rem 0;
-    width: 100%;
+    margin: 1rem 0 1rem -2rem;
+    border-left: var(--white) .1rem solid;
 }
 
 code {
