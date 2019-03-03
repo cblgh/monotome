@@ -22,6 +22,5 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-    html { font-size: 11pt; }
-    .content { max-width: 20rem; }
+    .content { max-width: 19rem; }
 }
