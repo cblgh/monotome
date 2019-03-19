@@ -3,6 +3,24 @@ body {
     height: unset;
 }
 
-.content {
-    margin-top: 6rem !important;
+.content { margin-top: 6rem !important }
+
+.index-link {
+    position: fixed;
+    padding: 2rem;
+    bottom: 0;
+    right: 0;
+}
+
+@media screen and (max-width: 880px) {
+    .content { max-width: 30rem; }
+    .index-link {
+        width: 100vw;
+        right: unset;
+        background-color: black;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .content { max-width: 19rem; }
 }

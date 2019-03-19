@@ -40,6 +40,7 @@ del {
 
 html {
     font-family: "Inter UI", sans-serif;
+    font-feature-settings: 'tnum' 1, "ss01" 1, "zero" 1; /* fixed-width numbers on, alternate number set on, dash through zero on */
     background-color: var(--dark);
     color: var(--light);
     line-height: 1.5rem;
