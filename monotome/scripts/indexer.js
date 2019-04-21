@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
         else if (e.key === "Enter") { processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
         else if (e.key === "Backspace") { e.preventDefault(); eraseFromBuffer() }
-        else { addToBuffer(e.key) }
+        else { addToBuffer(e, e.key) }
     }
 
     function isModifier (e) {
@@ -27,9 +27,10 @@ window.addEventListener("DOMContentLoaded", function () {
         else { buffer = buffer.slice(0, -1); emit("type-backspace") }
     }
 
-    function addToBuffer (ch) {
+    function addToBuffer (e, ch) {
         // don't add empty spaces to the buffer, user is probably scrolling down
         if (buffer === "" && ch === " ") return
+        e.preventDefault()
         buffer += ch
         emit("type", { ch: ch })
     }
