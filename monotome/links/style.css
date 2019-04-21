@@ -60,18 +60,22 @@ h1 {
 
 h2, h3, h4, h5, h6 {
     padding: 1rem 0;
+    line-height: 2.5rem;
 }
 
 h2 {
     font-size: 1.5rem;
+    color: hsl(0, 0%, 80%);
 }
 
 h3 {
     font-size: 1.25rem;
+    color: hsl(0, 0%, 65%);
 }
 
-h4 {
+h4,h5,h6 {
     font-size: 1.15rem;
+    color: hsl(0, 0%, 65%);
 }
 
 a {
