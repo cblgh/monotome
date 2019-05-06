@@ -21,6 +21,10 @@ You can fill `index.json`'s `subjects` by hand if you want to avoid running a sc
 
 This **`readme.md`** is the start page of your wiki and each **`readme.md`** within a subject folder is the overview page for that subject.
 
+### P2P
+Fork it in [Beaker Browser](https://beakerbrowser.com/): `dat://35addfbd705e84c4ef734d07484c8f2c54773596ed32b63ee507b3c86bcc268c`
+
+
 ### License
 monotome's code and resources are licensed under AGPL. 
 
