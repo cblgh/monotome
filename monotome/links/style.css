@@ -59,6 +59,10 @@ h1 {
     line-height: 2rem;
 }
 
+h1 + ul {
+    margin-top: 4rem;
+}
+
 h2, h3, h4, h5, h6 {
     padding: 1rem 0;
     line-height: 2.5rem;
