@@ -4,13 +4,11 @@ i wanted to start a wiki so i made this
 ![screenshot](media/screen.png)
 
 ### Get Started
-**Clone this project** and open `index.html` to give it a try
-
-if you're using **chrome** as your browser:
+* **Clone** this project
 * **Open** a terminal
 * **Navigate** to the cloned directory
-* **Run** `python -m SimpleHTTPServer`
-* **Browse** to **`localhost:8000`** to use the wiki
+* **Run** `python -m SimpleHTTPServer 8900`
+* **Browse** to **`localhost:8900`** to use the wiki
 
 ---
 
@@ -19,7 +17,7 @@ if you're using **chrome** as your browser:
 
 You can fill `index.json`'s `subjects` by hand if you want to avoid running a script. You can also run `node monotome/bin/generate.js` and it will write `index.json` for you.
 
-This **`readme.md`** is the start page of your wiki and each **`readme.md`** within a subject folder is the overview page for that subject.
+This `readme.md` is the start page of your wiki and each `readme.md` within a subject folder is the overview page for that subject.
 
 ### P2P
 Fork it in [Beaker Browser](https://beakerbrowser.com/): `dat://35addfbd705e84c4ef734d07484c8f2c54773596ed32b63ee507b3c86bcc268c`
