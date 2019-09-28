@@ -189,11 +189,10 @@ p {
 .breadcrumb {
     position: fixed; /* show the breadcrumb while we scroll through the index */
     border-bottom: 1px white solid;
-    padding: 1rem 0.1em 0.5rem 0.1rem;
-    width: 11rem;
+    padding: 1rem 0.1em 0.5rem 0.6rem;
+    width: 12.25rem;
     z-index: 10;
     background: var(--dark);
-    margin-left: .5rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
