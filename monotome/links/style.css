@@ -57,6 +57,7 @@ h1 {
     padding: 1rem 0;
     font-size: 2rem;
     line-height: 2rem;
+    letter-spacing: -0.025em;
 }
 
 h1 + ul {
