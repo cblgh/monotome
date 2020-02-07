@@ -155,6 +155,7 @@ ul {
 p {
     padding: .5rem 0;
     text-align: justify;
+    hyphens: auto;
 }
 
 .content {
