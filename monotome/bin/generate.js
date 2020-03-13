@@ -33,10 +33,12 @@ function walk(dir) {
 }
 walk(process.cwd()).then((data) => {
     var pattern = /(.*\/)+(.*\.md)/
+    var ignore = /\..*\/.*/ // ignore folders starting with a period, e.g. `.archives`
     json("index.json").then((index) => {
         index.subjects = {}
         console.log(`indexing ${data.length} articles`)
         data.forEach((p) => {
+            if (p.substring(process.cwd().length).match(ignore)) { return } // if found folder matches ignore rule; skip it
             var match = p.substring(process.cwd().length).match(pattern) 
             if (!match || match.length < 1 || match[1] === "/") return
             var subject = match[1].replace(/\//g, "")
