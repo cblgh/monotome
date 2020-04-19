@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-
 var fs = require("fs")
 var path = require("path")
+var findBacklinks = require("./backlinks.js")
 
 // https://gist.github.com/lovasoa/8691344#gistcomment-2631947
 function walk(dir) {
@@ -31,21 +31,33 @@ function walk(dir) {
         })
     })
 }
-walk(process.cwd()).then((data) => {
+
+const cwd = process.cwd()
+walk(cwd).then((data) => {
     var pattern = /(.*\/)+(.*\.md)/
     var ignore = /\..*\/.*/ // ignore folders starting with a period, e.g. `.archives`
     json("index.json").then((index) => {
         index.subjects = {}
+        index.backlinks = {}
         console.log(`indexing ${data.length} articles`)
-        data.forEach((p) => {
+        let files = data.map((p) => {
             if (p.substring(process.cwd().length).match(ignore)) { return } // if found folder matches ignore rule; skip it
             var match = p.substring(process.cwd().length).match(pattern) 
             if (!match || match.length < 1 || match[1] === "/") return
             var subject = match[1].replace(/\//g, "")
             index.subjects[subject] = index.subjects[subject] || [] 
             index.subjects[subject].push(match[2]) // article.md
+            return match.input
+        }).filter((f) => f && f.length > 0)
+        // collect all backlinks
+        Promise.all(files.map((f) => { return findBacklinks(`${cwd}${f}`) })).then((r) => {
+            r.forEach((backlink, i) => {
+                if (backlink.length > 0) { index.backlinks[files[i].slice(1)] = backlink }
+            })
+        }).then(() => {
+            // write final index file
+            fs.writeFile("index.json", JSON.stringify(index, null, 4), (err) => {if (err) throw err}, console.log(`index: updated`))
         })
-        fs.writeFile("index.json", JSON.stringify(index, null, 4), (err) => {if (err) throw err}, console.log(`index: updated`))
     })
 })
 
