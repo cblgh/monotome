@@ -50,9 +50,13 @@ walk(cwd).then((data) => {
             return match.input
         }).filter((f) => f && f.length > 0)
         // collect all backlinks
-        Promise.all(files.map((f) => { return findBacklinks(`${cwd}${f}`) })).then((r) => {
-            r.forEach((backlink, i) => {
-                if (backlink.length > 0) { index.backlinks[files[i].slice(1)] = backlink }
+        Promise.all(files.map((f) => { return findBacklinks(`${cwd}${f}`, f.slice(1)) })).then((r) => {
+            r.forEach((item) => {
+                item.forEach((backlink) => {
+                    if (!backlink.src) { return } 
+                    if (!index.backlinks[backlink.dst]) index.backlinks[backlink.dst] = []
+                    index.backlinks[backlink.dst].push(backlink)
+                })
             })
         }).then(() => {
             // write final index file

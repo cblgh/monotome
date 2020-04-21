@@ -217,6 +217,18 @@ p {
     margin: .5rem;
 }
 
+.backlinks {
+    position: fixed;
+    left: 14rem;
+    top: 0;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    color: var(--white);
+    padding: .5rem;
+    margin: .5rem;
+}
+
 .visible {
     display: block
 }

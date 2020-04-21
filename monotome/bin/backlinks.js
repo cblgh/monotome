@@ -2,7 +2,7 @@ const fs = require("fs")
     
 
 const pattern = /\[(.*)\]\(((?!https?:\/\/).*\.md)\)/g
-function backlink (path) {
+function backlink (path, relpath) {
     return new Promise((res, rej) => {
         fs.readFile(path, (err, data) => {
             if (!data) res([null])
@@ -11,10 +11,9 @@ function backlink (path) {
             let arr = []
             while ((match = pattern.exec(contents)) !== null) {
                 // pushes [desc, src-file.md] to arr
-                arr.push({src: match[2], desc: match[1]})
+                arr.push({src: relpath, dst: match[2], desc: match[1]})
             }
             res(arr)
-            res([path])
         })
     })
 }

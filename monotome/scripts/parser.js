@@ -20,11 +20,27 @@ window.onload = function() {
         var redirect = index.redirects[f]
         if (redirect) f = redirect
         read(f, function(body) {
+            // check if the opened file has any backlinks
+            document.querySelector(".backlinks").innerHTML = ""
+            if (index.backlinks[f]) {
+                let backlinks = index.backlinks[f]
+                document.querySelector(".backlinks").innerHTML = `${backlinks.length} ${backlinks.length > 1 ? "backlinks" : "backlink"}`
+                document.querySelector(".backlinks").onclick = function () {
+                    document.getElementById("backlinks-list").scrollIntoView({ behaviour: "smooth", block: "center" })
+                }
+                let injectedBacklinks = "<h3 id='backlinks-list'>Backlinks</h3><ul>\n"
+                backlinks.forEach((b) => {
+                    injectedBacklinks +=  `<li><a href="${b.src}">${b.src}: ${b.desc}</a></li>\n`
+                })
+                injectedBacklinks += "</ul>\n"
+                body += injectedBacklinks
+            }
             if (opts.changeHistory) {
                 window.location = `#${f}`
             }
             document.querySelector(".breadcrumb").innerHTML = decodeURI(f)
             document.querySelector(".content").innerHTML = body
+            document.querySelector(".content").scrollIntoView()
             document.body.querySelectorAll("a").forEach(function(a) {
                 // if relative markdown link
                 if (/^[^\/].*\.md$/.test(a.href)) {
