@@ -115,6 +115,8 @@ blockquote, pre {
     padding: 0.5rem 2rem;
     margin: 1rem 0 1rem -2rem;
     border-left: var(--white) .1rem solid;
+    background: #0f0f0f;
+    width: 100%;
 }
 
 code {
