@@ -60,11 +60,15 @@ h1 {
     letter-spacing: -0.025em;
 }
 
-h1 + ul {
-    margin-top: 4rem;
+h1 + h2, h1 + h3 {
+    padding-top: 0;
 }
 
-h2, h3, h4, h5, h6 {
+h1 + h4 {
+    margin-top: 2rem;
+}
+
+h2, h3 {
     padding: 1rem 0;
     line-height: 2.5rem;
 }
@@ -79,9 +83,11 @@ h3 {
     color: hsl(0, 0%, 65%);
 }
 
-h4,h5,h6 {
-    font-size: 1.15rem;
-    color: hsl(0, 0%, 65%);
+h4, h5, h6 {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
 }
 
 a {
