@@ -117,6 +117,7 @@ blockquote, pre {
     border-left: var(--white) .1rem solid;
     background: #0f0f0f;
     width: 100%;
+    overflow: scroll;
 }
 
 code {
