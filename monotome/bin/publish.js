@@ -27,7 +27,7 @@ var template = `
         <script src="monotome/scripts/reader.js"></script>
         <script src="monotome/scripts/instance.js"></script>
         <title>${title}</title>
-        <script>var source = "${source}"</script>
+        <script>var source = "articles/${title}.md"</script>
     </head>
     <body>
         <div class="content"></div>
