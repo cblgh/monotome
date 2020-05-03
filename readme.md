@@ -22,7 +22,7 @@ This `readme.md` is the start page of your wiki and each `readme.md` within a su
 ### Backlinks
 Monotome keeps track of backlinks, i.e. links from one article inside monotome to another. To discover backlinks, run `node monotome/bin/generate.js`. For a taste of what backlinks look like in practice, see the gif below.
 
-![monotome backlinks](https://cblgh.org/dl/monotome-backlinks.gif)
+![monotome backlinks](https://cblgh.org/dl/monotome-backlink-demo.gif)
 
 ### P2P
 Fork it in [Beaker Browser](https://beakerbrowser.com/): `dat://35addfbd705e84c4ef734d07484c8f2c54773596ed32b63ee507b3c86bcc268c`
