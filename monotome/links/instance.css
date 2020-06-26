@@ -24,3 +24,24 @@ body {
 @media screen and (max-width: 500px) {
     .content { max-width: 19rem; }
 }
+
+/* IPHONE 5S/SE*/
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) {
+    html {
+        font-size: 30pt;
+        line-height: 1.5;
+    }
+
+    .content { 
+        max-width: 19rem; 
+        margin: 1rem auto 6rem auto;
+        margin-top: 1rem !important;
+    }
+
+    a {
+        border-bottom: 1px solid white;
+    }
+}
+
