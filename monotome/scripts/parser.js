@@ -51,7 +51,7 @@ window.onload = function() {
         // highlight opened entry
         var previouslyActive = document.querySelector(".index-active")
         if (previouslyActive) previouslyActive.classList.remove("index-active")
-        var entry = document.getElementById(f.replace(/\/|(.md)|\s/g, ""))
+        var entry = document.getElementById(f.replace(/\/|(.md)|(%20)|\s/g, ""))
         if (entry) {
             if (opts.scrollTo) entry.scrollIntoView({ behaviour: "smooth", block: "center" })
             entry.classList.add("index-active")
