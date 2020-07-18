@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", function () {
     function handleKeypress (e) {
         keypressed = true
         if (isModifier(e)) { return }
-        else if (e.key === "Enter") { processBuffer(buffer) }
+        else if (e.key === "Enter") { document.activeElement.blur(); processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
         else if (e.key === "Backspace") { e.preventDefault(); eraseFromBuffer() }
         else { addToBuffer(e, e.key) }
