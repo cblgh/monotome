@@ -15,7 +15,7 @@ window.onload = function() {
 
     function open(f, opts) {
         if (typeof opts === "undefined") {
-            opts = { changeHistory: true }
+            opts = { changeHistory: true, scrollTo: false }
         }
         var redirect = index.redirects[f]
         if (redirect) f = redirect
@@ -100,8 +100,6 @@ window.onload = function() {
         document.title = index.title
         // add start to index
         indexInject(".", "start") 
-        // open the linked location, else start page
-        open(window.location.hash ? window.location.hash.substring(1) : "./readme.md")
         Object.keys(index.subjects).forEach(function(subject) {
             indexInject(subject, subject)
             var ul = el("ul")
@@ -113,5 +111,7 @@ window.onload = function() {
             })
             document.querySelector(".index").appendChild(ul)
         })
+        // open the linked location, else start page
+        open(window.location.hash ? window.location.hash.substring(1) : "./readme.md", { changeHistory: true, scrollTo: true })
     }
 }
