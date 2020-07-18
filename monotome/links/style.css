@@ -136,9 +136,13 @@ code {
 
 }
 
+pre {
+    background: var(--light);
+}
+
 pre code {
     border-style: dotted;
-    color: var(--light);
+    color: var(--dark);
     padding: unset;
     border-radius: unset;
     background: unset;
