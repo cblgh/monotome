@@ -167,6 +167,10 @@ ul {
     margin-left: 1rem;
 }
 
+li > ul, li > ol {
+    margin-left: 2rem;
+}
+
 p {
     padding: .5rem 0;
     text-align: justify;
