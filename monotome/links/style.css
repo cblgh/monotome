@@ -138,6 +138,7 @@ code {
 
 pre {
     background: var(--light);
+    border-left: unset;
 }
 
 pre code {
