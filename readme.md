@@ -7,7 +7,7 @@ i wanted to start a wiki so i made this
 * **Clone** this project
 * **Open** a terminal
 * **Navigate** to the cloned directory
-* **Run** `python -m SimpleHTTPServer 8900`
+* **Run** `python -m http.server 8900`
 * **Browse** to **`localhost:8900`** to use the wiki
 
 ---
