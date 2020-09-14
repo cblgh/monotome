@@ -14,6 +14,9 @@ var header =
     <body>
         <div class="content">
             <h1>Article Index</h1>
+            <p>Below are a few of my articles on topics of research, or of flighty ideas. Typically, they start as
+            private wiki posts, written in <a href="https://github.com/cblgh/monotome">monotome</a>, and later published
+            if the topic s brought up often enough in conversations.</p>
             <ul>
 `
 

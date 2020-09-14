@@ -189,6 +189,11 @@ p {
     hyphens: auto;
 }
 
+td, th {
+    padding: 0.5rem;
+    border: 1px white solid;
+}
+
 .content {
     margin: 3rem auto 6rem auto;
     width: 40rem;
