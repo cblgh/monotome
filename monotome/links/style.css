@@ -84,11 +84,18 @@ h3 {
 }
 
 h4, h5, h6 {
-    font-weight: bold;
     margin: 0;
     padding: 0;
     line-height: inherit;
     margin-top: 1rem;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+h5 {
+    font-style: italic;
 }
 
 a {
@@ -114,18 +121,22 @@ a[href^="http://"], a[href^="https://"] {
 
 blockquote, pre {
     padding: 0.5rem 2rem;
-    margin: 1rem 0 1rem -2rem;
+    margin: 1rem 0;
     border-left: var(--white) .1rem solid;
     background: #0f0f0f;
     width: 100%;
     overflow: scroll;
 }
 
+li {
+    line-height: 1.3;
+}
+
 code {
     color: var(--code-bg);
     background: var(--light);
-    padding: 0.1rem .5rem;
-    border-radius: 1rem;
+    padding: 0.25rem 0.25rem 0 0.25rem;
+    border-radius: 2px;
     /* make entire contents selectable by one click */
     -webkit-touch-callout: all;
     -webkit-user-select: all;
