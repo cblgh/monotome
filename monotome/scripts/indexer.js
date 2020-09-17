@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     function handleKeypress (e) {
         keypressed = true
+        if (isFunction(e)) { return }
         if (isModifier(e)) { return }
         else if (e.key === "Enter") { document.activeElement.blur(); processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
@@ -18,12 +19,16 @@ window.addEventListener("DOMContentLoaded", function () {
         else { addToBuffer(e, e.key) }
     }
 
+    function isFunction (e) {
+        return e.keyCode == 0 || (e.keyCode >= 112 && e.keyCode <= 123);
+    }
+
     function isModifier (e) {
         return e.altKey || e.ctrlKey || e.metaKey || e.key === "Shift" || (buffer.length === 0 && e.key === "Backspace")
     }
 
     function eraseFromBuffer () {
-        if (buffer.length === 1) { clearBuffer() } 
+        if (buffer.length === 1) { clearBuffer() }
         else { buffer = buffer.slice(0, -1); emit("type-backspace") }
     }
 
@@ -41,7 +46,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function bufferTimeout () {
-        if (!keypressed) { clearBuffer() } 
+        if (!keypressed) { clearBuffer() }
         else { keypressed = false }
     }
 
@@ -61,7 +66,7 @@ window.addEventListener("DOMContentLoaded", function () {
         for (var subject of Object.keys(index.subjects)) {
             if (subject.indexOf(term) >= 0) {
                 if (index.subjects[subject].indexOf("readme.md") >= 0) {
-                    emit("open-file", { file: subject + "/readme.md" }) 
+                    emit("open-file", { file: subject + "/readme.md" })
                     return
                 }
             }
