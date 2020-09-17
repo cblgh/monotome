@@ -9,8 +9,8 @@ window.onload = function() {
     })
 
     // listen after indexer requests to open files
-    document.body.addEventListener("open-file", function (e) { 
-        open(e.detail.file, { scrollTo: true, changeHistory: true }) 
+    document.body.addEventListener("open-file", function (e) {
+        open(e.detail.file, { scrollTo: true, changeHistory: true })
     })
 
     function open(f, opts) {
@@ -22,7 +22,7 @@ window.onload = function() {
         read(f, function(body) {
             // check if the opened file has any backlinks
             document.querySelector(".backlinks").innerHTML = ""
-            if (index.backlinks[f]) {
+            if (index.backlinks && index.backlinks[f]) {
                 let backlinks = index.backlinks[f]
                 document.querySelector(".backlinks").innerHTML = `${backlinks.length} ${backlinks.length > 1 ? "backlinks" : "backlink"}`
                 document.querySelector(".backlinks").onclick = function () {
@@ -69,8 +69,8 @@ window.onload = function() {
     function link(node, i, text) {
         if (!text) text = i
         return el("a", {
-            href: `${index.root}${node}/${i}`, 
-            text: text, 
+            href: `${index.root}${node}/${i}`,
+            text: text,
             onclick: linkHandler(`${index.root}${node}/${i}`)
         })
     }
@@ -99,7 +99,7 @@ window.onload = function() {
         // set page title
         document.title = index.title
         // add start to index
-        indexInject(".", "start") 
+        indexInject(".", "start")
         Object.keys(index.subjects).forEach(function(subject) {
             indexInject(subject, subject)
             var ul = el("ul")
