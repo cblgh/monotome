@@ -22,7 +22,7 @@ window.onload = function() {
         read(f, function(body) {
             // check if the opened file has any backlinks
             document.querySelector(".backlinks").innerHTML = ""
-            if (index.backlinks[f]) {
+            if (index.backlinks && index.backlinks[f]) {
                 let backlinks = index.backlinks[f]
                 document.querySelector(".backlinks").innerHTML = `${backlinks.length} ${backlinks.length > 1 ? "backlinks" : "backlink"}`
                 document.querySelector(".backlinks").onclick = function () {
