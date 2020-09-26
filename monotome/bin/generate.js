@@ -34,6 +34,7 @@ function walk(dir) {
 
 const cwd = process.cwd()
 walk(cwd).then((data) => {
+    data.sort((a, b) => a.localeCompare(b)); // sort lexicographically, so that sub-folders are under parent
     var pattern = /(.*\/)+(.*\.md)/
     var ignore = /\..*\/.*/ // ignore folders starting with a period, e.g. `.archives`
     json("index.json").then((index) => {
@@ -42,10 +43,10 @@ walk(cwd).then((data) => {
         console.log(`indexing ${data.length} articles`)
         let files = data.map((p) => {
             if (p.substring(process.cwd().length).match(ignore)) { return } // if found folder matches ignore rule; skip it
-            var match = p.substring(process.cwd().length).match(pattern) 
+            var match = p.substring(process.cwd().length).match(pattern)
             if (!match || match.length < 1 || match[1] === "/") return
-            var subject = match[1].replace(/\//g, "")
-            index.subjects[subject] = index.subjects[subject] || [] 
+            var subject = match[1].replace(/^\/(.*)\/$/g, "$1") // strip leading/trailing slash
+            index.subjects[subject] = index.subjects[subject] || []
             index.subjects[subject].push(match[2]) // article.md
             return match.input
         }).filter((f) => f && f.length > 0)
@@ -53,7 +54,7 @@ walk(cwd).then((data) => {
         Promise.all(files.map((f) => { return findBacklinks(`${cwd}${f}`, f.slice(1)) })).then((r) => {
             r.forEach((item) => {
                 item.forEach((backlink) => {
-                    if (!backlink.src) { return } 
+                    if (!backlink.src) { return }
                     if (!index.backlinks[backlink.dst]) index.backlinks[backlink.dst] = []
                     index.backlinks[backlink.dst].push(backlink)
                 })
