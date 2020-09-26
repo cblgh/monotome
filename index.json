@@ -5,8 +5,21 @@
         "example": [
             "first.md",
             "readme.md"
+        ],
+        "example/sub1": [
+            "first.md",
+            "readme.md"
+        ],
+        "example/sub1/sub3": [
+            "first.md",
+            "readme.md"
+        ],
+        "example/sub2": [
+            "first.md",
+            "readme.md"
         ]
     },
     "redirects": {},
-    "missing": []
+    "missing": [],
+    "backlinks": {}
 }
