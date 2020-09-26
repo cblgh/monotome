@@ -29,8 +29,17 @@ window.onload = function() {
                     document.getElementById("backlinks-list").scrollIntoView({ behaviour: "smooth", block: "center" })
                 }
                 let injectedBacklinks = "<h3 id='backlinks-list'>Backlinks</h3><ul>\n"
+                var dedupedBacklinks = {}
                 backlinks.forEach((b) => {
-                    injectedBacklinks +=  `<li><a href="${b.src}">${b.src}: ${b.desc}</a></li>\n`
+                    let key = b.src+b.desc
+                    if (!dedupedBacklinks[key]) { dedupedBacklinks[key] = [] }
+                    dedupedBacklinks[key].push(b)
+                })
+                Object.keys(dedupedBacklinks).forEach((key) => {
+                    let record = dedupedBacklinks[key]
+                    let b = record[0]
+                    const count = record.length > 1 ? ` (${record.length})` : ""
+                    injectedBacklinks +=  `<li><a href="${b.src}">${b.src}: ${b.desc}</a>${count}</li>\n`
                 })
                 injectedBacklinks += "</ul>\n"
                 body += injectedBacklinks
