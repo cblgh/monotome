@@ -11,12 +11,20 @@ window.addEventListener("DOMContentLoaded", function () {
 
     function handleKeypress (e) {
         keypressed = true
+        if (isNavigation(e)) { return }
         if (isFunction(e)) { return }
         if (isModifier(e)) { return }
+        else if (e.key === "Tab") { addToBuffer(e, "/") }
         else if (e.key === "Enter") { document.activeElement.blur(); processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
         else if (e.key === "Backspace") { e.preventDefault(); eraseFromBuffer() }
+        else if (e.key === "ArrowRight") { console.log("right arrow") }
+        else if (e.key === "ArrowLeft") { console.log("left arrow") }
         else { addToBuffer(e, e.key) }
+    }
+
+    function isNavigation (e) {
+        return e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === "PageUp"
     }
 
     function isFunction (e) {
