@@ -82,25 +82,25 @@ window.addEventListener("DOMContentLoaded", function () {
             emit("open-file", { file: "./readme.md" })
             return
         }
+        let previousMatch = false
         // process all categories first
         searchQueue = Object.keys(index.subjects).filter(subject => subject.indexOf(term) >= 0 && 
             index.subjects[subject].indexOf("readme.md") >= 0).map(s => s + "/readme.md")
         if (searchQueue.length > 0) {
             emit("open-file", { file: searchQueue[0] })
-            return
+            previousMatch = true
         }
 
-        searchQueue = [] 
         // process all articles after the categories
-        for (var subject of Object.keys(index.subjects)) {
+        for (let subject of Object.keys(index.subjects)) {
             for (var pair of index.subjects[subject].entries()) {
                 var [_, article] = pair
                 var file = subject + "/" + article
-                if (file.indexOf(term) >= 0) {
+                if (file.indexOf(term) >= 0 && searchQueue.indexOf(file) < 0) {
                     searchQueue.push(file)
                 }
             }
         }
-        if (searchQueue.length > 0) { emit("open-file", { file: searchQueue[0] }) }
+        if (searchQueue.length > 0 && !previousMatch) { emit("open-file", { file: searchQueue[0] }) }
     }
 })
