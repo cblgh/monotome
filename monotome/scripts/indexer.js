@@ -18,8 +18,8 @@ window.addEventListener("DOMContentLoaded", function () {
         else if (e.key === "Enter") { document.activeElement.blur(); processBuffer(buffer) }
         else if (e.key === "Escape") { clearBuffer() }
         else if (e.key === "Backspace") { e.preventDefault(); eraseFromBuffer() }
-        else if (e.key === "ArrowRight") { console.log("right arrow") }
-        else if (e.key === "ArrowLeft") { console.log("left arrow") }
+        else if (e.key === "ArrowRight") { processSearchQueue("right") }
+        else if (e.key === "ArrowLeft") { processSearchQueue("left") }
         else { addToBuffer(e, e.key) }
     }
 
@@ -63,32 +63,44 @@ window.addEventListener("DOMContentLoaded", function () {
         clearBuffer()
     }
 
+    function processSearchQueue(direction) {
+        if (!searchQueue || searchQueue.length < 1) { return }
+        if (direction === "right") {
+            // push most recently seen item to the end
+            searchQueue.push(searchQueue.splice(0, 1)[0])
+        } else if (direction === "left") {
+            searchQueue.unshift(searchQueue.pop())
+        }
+        emit("open-file", { file: searchQueue[0] })
+    }
+
+    let searchQueue = []
     function searchIndex (term) {
-        // some browsers have / as a search hotkey: use -- to type /
+        // some browsers have / as a search hotkey: use -- (or Tab) to type /
         term = term.replace("--", "/")
         if (term[0] === ".") {
             emit("open-file", { file: "./readme.md" })
             return
         }
         // process all categories first
-        for (var subject of Object.keys(index.subjects)) {
-            if (subject.indexOf(term) >= 0) {
-                if (index.subjects[subject].indexOf("readme.md") >= 0) {
-                    emit("open-file", { file: subject + "/readme.md" })
-                    return
-                }
-            }
+        searchQueue = Object.keys(index.subjects).filter(subject => subject.indexOf(term) >= 0 && 
+            index.subjects[subject].indexOf("readme.md") >= 0).map(s => s + "/readme.md")
+        if (searchQueue.length > 0) {
+            emit("open-file", { file: searchQueue[0] })
+            return
         }
+
+        searchQueue = [] 
         // process all articles after the categories
         for (var subject of Object.keys(index.subjects)) {
             for (var pair of index.subjects[subject].entries()) {
                 var [_, article] = pair
                 var file = subject + "/" + article
                 if (file.indexOf(term) >= 0) {
-                    emit("open-file", { file: file })
-                    return
+                    searchQueue.push(file)
                 }
             }
         }
+        if (searchQueue.length > 0) { emit("open-file", { file: searchQueue[0] }) }
     }
 })
