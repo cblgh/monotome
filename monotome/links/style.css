@@ -176,9 +176,9 @@ h1 + ol, h2 + ol, h3 + ol {
         padding-top: 1rem;
     }
 
+ul, ol { margin-left: 1rem; }
 ul {
     list-style-image: url("../media/dot.svg");
-    margin-left: 1rem;
 }
 
 li > ul, li > ol {
