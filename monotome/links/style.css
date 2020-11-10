@@ -191,6 +191,11 @@ p {
     hyphens: auto;
 }
 
+table {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 td, th {
     padding: 0.5rem;
     border: 1px white solid;
