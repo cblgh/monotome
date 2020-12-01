@@ -19,6 +19,19 @@ You can fill `index.json`'s `subjects` by hand if you want to avoid running a sc
 
 This `readme.md` is the start page of your wiki and each `readme.md` within a subject folder is the overview page for that subject.
 
+### Inlined articles
+Monotome supports a link syntax for inlining other monotome articles into a source article.
+
+![inlined-wiki](https://user-images.githubusercontent.com/3862362/100735405-717b0080-33d1-11eb-9911-8e210a5cb713.gif)
+
+Any link `<a>` with a href referring to the local domain & which
+has the anchor-tag attribute `download` will be inlined into the document.
+
+e.g. if one file has some content and then:
+`<a href="example/first.md" download></a>`
+
+the file `example/first.md` will be inlined in place of the anchor tag, at the place where the tag is defined.
+
 ### Backlinks
 Monotome keeps track of backlinks, i.e. links from one article inside monotome to another. To discover backlinks, run `node monotome/bin/generate.js`. For a taste of what backlinks look like in practice, see the gif below.
 
