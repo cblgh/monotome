@@ -56,6 +56,13 @@ window.onload = function() {
                     a.onclick = linkHandler(a.getAttribute("href"))
                 }
             })
+
+            // find all inlined wiki document references
+            for (let anchor of document.querySelectorAll("a[download]")) {
+                read(anchor.href, function (contents) {
+                    anchor.outerHTML = contents
+                })
+            }
         })
         // highlight opened entry
         var previouslyActive = document.querySelector(".index-active")
