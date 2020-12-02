@@ -20,7 +20,7 @@ You can fill `index.json`'s `subjects` by hand if you want to avoid running a sc
 This `readme.md` is the start page of your wiki and each `readme.md` within a subject folder is the overview page for that subject.
 
 ### Inlined articles
-Monotome supports a link syntax for inlining other monotome articles into a source article.
+Monotome supports a link syntax for inlining other monotome articles into a source article. This is commonly known as [transclusion](https://en.wikipedia.org/wiki/Transclusion).
 
 ![inlined-wiki](https://user-images.githubusercontent.com/3862362/100735405-717b0080-33d1-11eb-9911-8e210a5cb713.gif)
 
