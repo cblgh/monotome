@@ -34,6 +34,8 @@ function walk(dir) {
 
 const cwd = process.cwd()
 walk(cwd).then((data) => {
+    if (path.sep != path.posix.sep)
+        data = data.map(data => data.split(path.sep).join(path.posix.sep))
     data.sort((a, b) => a.localeCompare(b)); // sort lexicographically, so that sub-folders are under parent
     var pattern = /(.*\/)+(.*\.md)/
     var ignore = /\..*\/.*/ // ignore folders starting with a period, e.g. `.archives`
