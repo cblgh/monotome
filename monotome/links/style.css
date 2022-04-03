@@ -67,12 +67,10 @@ h2, h3 {
 
 h2 {
     font-size: 1.5rem;
-    color: hsl(0, 0%, 80%);
 }
 
 h3 {
     font-size: 1.25rem;
-    color: hsl(0, 0%, 65%);
 }
 
 h4, h5, h6 {
@@ -273,6 +271,19 @@ td, th {
 
 .visible {
     display: block
+}
+
+button, input {
+    color: black;
+    border-radius: 8px;
+    padding: 0.1rem 0.25rem;
+    margin: 0.1rem;
+    cursor: pointer;
+    border: #333 solid 0.1rem;
+}
+button:hover, input:hover {
+    color: black;
+    background: #999;
 }
 
 
