@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function isNavigation (e) {
-        return e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === "PageUp"
+        return e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === "PageUp" || e.key === "Home" || e.key === "End"
     }
 
     function isFunction (e) {
