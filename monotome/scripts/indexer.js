@@ -3,6 +3,11 @@ window.addEventListener("DOMContentLoaded", function () {
     var keypressed = false
     var index
 
+    document.body.addEventListener("wikilink", function (e) {
+      buffer = e.detail
+      processBuffer()
+    })
+
     document.body.addEventListener("open-index", function (e) {
         index = e.detail
         window.addEventListener("keydown", handleKeypress)

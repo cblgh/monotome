@@ -20,6 +20,16 @@ window.onload = function() {
         var redirect = index.redirects[f]
         if (redirect) f = redirect
         read(f, function(body) {
+            // search and replace [[wikilinks]] with /#search/links
+            const linkify = (s) => `<a href="/#search/${s}">${s}</a>`
+            while (true) {
+                // redeclare to reset the state of the regex
+                const wikilinkPattern = /.*(\[\[(.*?)\]\]).*/sg
+                matches = wikilinkPattern.exec(body)
+                if (matches === null) { break }
+                body = body.replaceAll(matches[1], linkify(matches[2]))
+            }
+
             // check if the opened file has any backlinks
             document.querySelector(".backlinks").innerHTML = ""
             if (index.backlinks && index.backlinks[f]) {
@@ -54,6 +64,13 @@ window.onload = function() {
                 // if relative markdown link
                 if (/^[^\/].*\.md$/.test(a.href)) {
                     a.onclick = linkHandler(a.getAttribute("href"))
+                }
+                // if [[wikilink]]
+                if (/^.*\/#search.*/.test(a.href)) {
+                    a.onclick = function (e) {
+                        e.preventDefault()
+                        emit("wikilink", a.getAttribute("href").replace("/#search/", ""))
+                    }
                 }
             })
 
