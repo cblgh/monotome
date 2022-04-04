@@ -31,6 +31,19 @@ Monotome keeps track of backlinks, or incoming links from one article inside mon
 
 ![monotome backlinks](https://user-images.githubusercontent.com/3862362/89731988-c58d5e00-da4b-11ea-82fc-0fa2f20b2505.gif)
 
+### Wiki syntax (searchlinks)
+
+Monotome has support for the common `[[wiki]]` syntax, although it implements it in a slightly
+different way. When you use wiki syntax on a word or phrase in your wiki, a link will be created.
+Clicking that link will perform a search on the subjects and articles of a wiki and navigate to
+the first result of that search. 
+
+If the result was not what you wanted, you can page the searchlink results with the left and
+right arrow keys.
+
+Just as `[article](subject/file.md)` links are tracked with backlinks, so too are `[[wiki]]`
+links.
+
 ### License
 monotome's code and resources are licensed under AGPL. 
 
