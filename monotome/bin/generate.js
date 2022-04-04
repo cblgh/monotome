@@ -54,11 +54,30 @@ walk(cwd).then((data) => {
         }).filter((f) => f && f.length > 0)
         // collect all backlinks
         Promise.all(files.map((f) => { return findBacklinks(`${cwd}${f}`, f.slice(1)) })).then((r) => {
+            // construct a list of all relative paths (subject/filename.md) for operating on with the [[wikilinks]]
+            const subjectPaths = []
+            for (let subject of Object.keys(index.subjects)) {
+              for (let filename of index.subjects[subject]) {
+                subjectPaths.push([subject, filename].join(path.posix.sep))
+              }
+            }
             r.forEach((item) => {
                 item.forEach((backlink) => {
                     if (!backlink.src) { return }
                     if (!index.backlinks[backlink.dst]) index.backlinks[backlink.dst] = []
-                    index.backlinks[backlink.dst].push(backlink)
+                    // we already have the full relative link, push it
+                    if (!backlink.wiki) {
+                      index.backlinks[backlink.dst].push(backlink)
+                    }
+                    // get the set of all relative links the [[wikilink]] matches and add a backlink there
+                    if (backlink.wiki) {
+                      for (let path of subjectPaths) {
+                        if (path.indexOf(backlink.dst) > 0) {
+                          if (!index.backlinks[path]) index.backlinks[path] = []
+                          index.backlinks[path].push(backlink)
+                        }
+                      }
+                    }
                 })
             })
         }).then(() => {

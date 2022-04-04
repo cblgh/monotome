@@ -24,7 +24,7 @@ window.onload = function() {
             const linkify = (s) => `<a href="/#search/${s}">${s}</a>`
             while (true) {
                 // redeclare to reset the state of the regex
-                const wikilinkPattern = /.*(\[\[(.*?)\]\]).*/sg
+                const wikilinkPattern = /(\[\[(.*?)\]\])/g
                 matches = wikilinkPattern.exec(body)
                 if (matches === null) { break }
                 body = body.replaceAll(matches[1], linkify(matches[2]))

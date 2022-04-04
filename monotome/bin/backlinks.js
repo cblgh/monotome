@@ -1,7 +1,7 @@
 const fs = require("fs")
     
-
 const pattern = /\[(.*)\]\(((?!https?:\/\/).*\.md)\)/g
+const wikilinkPattern = /\[\[(.*?)\]\]/g
 function backlink (path, relpath) {
     return new Promise((res, rej) => {
         fs.readFile(path, (err, data) => {
@@ -12,6 +12,9 @@ function backlink (path, relpath) {
             while ((match = pattern.exec(contents)) !== null) {
                 // pushes [desc, src-file.md] to arr
                 arr.push({src: relpath, dst: match[2], desc: match[1]})
+            }
+            while ((match = wikilinkPattern.exec(contents)) !== null) {
+              arr.push({src: relpath, dst: match[1], desc: match[1], wiki: true})
             }
             res(arr)
         })
