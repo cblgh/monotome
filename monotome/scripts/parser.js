@@ -21,7 +21,7 @@ window.onload = function() {
         if (redirect) f = redirect
         read(f, function(body) {
             // search and replace [[wikilinks]] with /#search/links
-            const linkify = (s) => `<a href="/#search/${s}">${s}</a>`
+            const linkify = (s) => `<a href="/#search/${s.toLowerCase()}">${s}</a>`
             while (true) {
                 // redeclare to reset the state of the regex
                 const wikilinkPattern = /(\[\[(.*?)\]\])/g
