@@ -250,11 +250,13 @@ td, th {
     right: 0;
     top: 0;
     width: 8rem;
-    height: 1rem;
     background: var(--white);
     color: var(--dark);
     padding: .5rem;
     margin: .5rem;
+
+    border-radius: 0px;
+    height: 2rem;
 }
 
 .backlinks {
@@ -293,4 +295,44 @@ button:hover, input:hover {
         margin: 3rem auto 6rem auto;
         width: 30rem;
     }
+}
+
+@media screen and (max-width: 880px) {
+    body { max-width: 30rem; }
+}
+
+@media screen and (max-width: 500px) {
+    body { max-width: 19rem; }
+}
+
+/* IPHONE 5S/SE*/
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) {
+    html {
+        font-size: 9pt;
+        line-height: 1.5;
+    }
+body {
+    grid-template-columns: 9rem 1fr;
+}
+.content {
+    width: 18rem;
+}
+.index {
+	width: 8rem;
+	word-break: break-all;
+}
+.breadcrumb {
+    width: 8rem;
+}
+
+    /* body {  */
+    /*     max-width: 19rem;  */
+    /*     margin: 1rem auto 6rem auto; */
+    /*     margin-top: 1rem !important; */
+    /*     padding: 2rem; */
+    /* } */
+    /*  */
+    /* a { border-bottom: 1px white solid; } */
 }

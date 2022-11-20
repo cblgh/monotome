@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener("open-index", function (e) {
         index = e.detail
         window.addEventListener("keydown", handleKeypress)
-        setInterval(bufferTimeout, 1000)
+        setInterval(bufferTimeout, 3000)
     })
 
     function handleKeypress (e) {
