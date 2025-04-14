@@ -57,7 +57,7 @@ window.onload = function() {
             if (opts.changeHistory) {
                 window.location = `#${f}`
             }
-            document.querySelector(".breadcrumb").innerHTML = decodeURI(f)
+            document.querySelector(".breadcrumb > div:first-of-type").innerHTML = decodeURI(f)
             document.querySelector(".content").innerHTML = body
             document.querySelector(".content").scrollIntoView()
             document.body.querySelectorAll("a").forEach(function(a) {

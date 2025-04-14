@@ -4,10 +4,19 @@ window.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener("type-clear", clearNav)
 
     // for mobile: click on breadcrumb to display navigation & type into it 
-    document.querySelector(".breadcrumb").addEventListener("click", function () {
+    document.querySelector(".breadcrumb > div:first-of-type").addEventListener("click", function () {
       var nav = document.querySelector(".navigation")
       nav.classList.add("visible")
       nav.focus()
+    })
+    // click on » glyph to put sidebar into center for a focused display mode
+    document.querySelector(".breadcrumb > div:nth-of-type(2)").addEventListener("click", function () {
+      const body = document.querySelector("body")
+      if (body.classList.contains("index-full-display")) {
+        body.classList.remove("index-full-display")
+      } else {
+        body.classList.add("index-full-display")
+      }
     })
 })
 
