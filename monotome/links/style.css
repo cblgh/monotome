@@ -321,13 +321,13 @@ and (max-device-width : 667px) {
     right: 0;
     top: 0;
     width: 8rem;
+    height: min-content;
     background: var(--white);
     color: var(--dark);
     padding: .5rem;
     margin: .5rem;
 
     border-radius: 0px;
-    height: 2rem;
 }
 
 .backlinks {
