@@ -106,6 +106,11 @@ window.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
+        // if search term causes searchQueue to end up at current page, cycle the search queue by one step instead
+        if (searchQueue && searchQueue.length > 0 && searchQueue[0] === window.location.hash.slice(1)) {
+          processSearchQueue("right")
+          return
+        }
         if (searchQueue.length > 0 && !previousMatch) { emit("open-file", { file: searchQueue[0] }) }
     }
 })
