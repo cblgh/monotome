@@ -88,6 +88,11 @@ window.addEventListener("DOMContentLoaded", function () {
             return
         }
         let previousMatch = false
+        // if actively perform empty search: cycle search queue
+        if (term === "" && searchQueue && searchQueue.length > 0) {
+          processSearchQueue("right")
+          return
+        }
         // process all categories first
         searchQueue = Object.keys(index.subjects).filter(subject => subject.indexOf(term) >= 0 && 
             index.subjects[subject].indexOf("readme.md") >= 0).map(s => s + "/readme.md")
