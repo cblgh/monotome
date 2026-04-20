@@ -1,23 +1,29 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="monotome/links/style.css">
         <link rel="stylesheet" href="monotome/links/custom.css">
         <script src="monotome/scripts/marked.js"></script>
-        <script src="monotome/scripts/emitter.js"></script>
         <script src="monotome/scripts/reader.js"></script>
+        <script src="monotome/scripts/emitter.js"></script>
         <script src="monotome/scripts/parser.js"></script>
         <script src="monotome/scripts/indexer.js"></script>
         <script src="monotome/scripts/visualiser.js"></script>
+        <script src="monotome/scripts/backlinker.js"></script>
         <title>wiki exp</title>
     </head>
         <body>
             <div class="sidebar">
-                <div class="breadcrumb"></div>
+                <div class="breadcrumb">
+                    <div></div>
+                    <div>»</div>
+                </div>
                 <div class="index"></div>
             </div>
             <div class="content"></div>
-            <input class="navigation"></div>
+            <input type="text" class="navigation">
             <div class="backlinks"></div>
         </body>
 </html>
